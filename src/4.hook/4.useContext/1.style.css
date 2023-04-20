@@ -1,0 +1,36 @@
+.panel-light, .panel-dark {
+    border: .1rem solid black;
+    border-radius: .4rem;
+    padding: 1.2rem;
+}
+
+.panel-light {
+    color: #222;
+    background: #fff;
+}
+
+.panel-dark {
+    color: #fff;
+    background: rgb(23, 32, 42);
+}
+
+.button-light, .button-dark {
+    border: .1rem solid #777;
+    padding: .5rem;
+    margin-right: .4rem;
+    margin-top: .8rem;
+}
+
+.button-dark {
+    background: #222;
+    color: #fff;
+}
+
+.button-light {
+    background: #fff;
+    color: #222;
+}
+
+.label {
+    display: block;
+}
