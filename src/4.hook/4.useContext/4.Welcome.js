@@ -24,7 +24,7 @@ export default function Welcome() {
 }
 
 function WelcomePanel() {
-    const currentUser = useContext(CurrentUserContext)
+    const {currentUser} = useContext(CurrentUserContext)
 
     return (
         <Panel title='welcome'>
@@ -45,4 +45,50 @@ function Panel({title, children}) {
     )
 }
 
-function 
+function Greeting() {
+    const {currentUser} = useContext(CurrentUserContext)
+    return <p>you looged in as {currentUser.username}</p>
+}
+
+function LoginForm() {
+    const {setCurrentUser} = useContext(CurrentUserContext)
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const isVal = firstName && lastName
+
+    return (
+        <>
+            <label>
+                first name{': '}
+                <input required
+                    value={firstName}
+                    onChange={e => setFirstName(e.target.value)}/>
+            </label><br/>
+            <label>
+                last name{': '}
+                <input required
+                    value={lastName}
+                    onChange={e => setLastName(e.target.value)}/>
+            </label><br/>
+            <Button disabled={!isVal}
+                onClick={() => setCurrentUser({
+                    username: firstName + ' ' + lastName
+                })}>
+                    log in
+            </Button>
+        </>
+    )
+}
+
+function Button({disabled, onClick, children}) {
+    const theme = useContext(ThemeContext)
+    const className = 'button-' + theme
+    
+    return (
+        <button className={className}
+            disabled={disabled}
+            onClick={onClick}>
+            {children}
+        </button>
+    )
+}
